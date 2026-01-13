@@ -1,0 +1,202 @@
+{
+  "main": {
+    "id": "8065976523a96c0e",
+    "type": "split",
+    "children": [
+      {
+        "id": "7b2395a11ee62a66",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3467fbb2a687fd92",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies"
+            }
+          },
+          {
+            "id": "9cda0db0f32ce01c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025-01-13 Autocorrelation of.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-01-13 Autocorrelation of"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "19f621a2b4423d67",
+    "type": "split",
+    "children": [
+      {
+        "id": "84f7185f1c488490",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cea5c9a34eb47d93",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabeticalReverse"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e475953b76c9258e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "51d237feaaf6127f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f788eaee6647fc85",
+    "type": "split",
+    "children": [
+      {
+        "id": "4de88872d3d12853",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "35ac9f8afca7048d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2025-01-13 Autocorrelation of.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 2025-01-13 Autocorrelation of"
+            }
+          },
+          {
+            "id": "41976eff2065a534",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "2025-01-13 Autocorrelation of.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 2025-01-13 Autocorrelation of"
+            }
+          },
+          {
+            "id": "3ff0b07291072956",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c08110b41b9d0a94",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2025-01-13 Autocorrelation of.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 2025-01-13 Autocorrelation of"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "9cda0db0f32ce01c",
+  "lastOpenFiles": [
+    "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies.md",
+    "2025-01-13 Autocorrelation of.md",
+    "2025-01-13 dimensional scaling.png",
+    "2025-01-13 Sequential Importance Sampling.md",
+    "2025-01-12 Note on HMC Problems to Yifan.md",
+    "2025-01-13 Importance Sampling.md",
+    "To Do.md",
+    "2025-01-10 Jarzynski's equality.md",
+    "Blogs that are Nice.md",
+    "2025-01-12 Nested Sampling.md",
+    "2025-01-12 rv.png",
+    "2025-01-12 posterior corner.png",
+    "2025-01-12 posterior velocities.png",
+    "2025-01-12 raw rv data.png",
+    "2025-01-09 Transformers.md",
+    "2025-01-09 Generative Modeling from Black-box Corruptions.md",
+    "2025-01-09 problems.png",
+    "Untitled",
+    "Welcome.md"
+  ]
+}
