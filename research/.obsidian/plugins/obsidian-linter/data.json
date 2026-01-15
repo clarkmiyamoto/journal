@@ -210,7 +210,7 @@
       "enabled": false
     },
     "move-math-block-indicators-to-their-own-line": {
-      "enabled": true
+      "enabled": false
     },
     "paragraph-blank-lines": {
       "enabled": false
