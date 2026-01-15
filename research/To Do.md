@@ -1,4 +1,4 @@
-
+Code up todo's in [[2025-01-13 Dimensional Scaling & Optimally Tuned Matricies]]
 
 Reading list
 - Ensemble Based Annealed Importance Sampling: https://arxiv.org/pdf/2401.15645

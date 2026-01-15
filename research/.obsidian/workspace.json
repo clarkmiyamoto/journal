@@ -4,35 +4,49 @@
     "type": "split",
     "children": [
       {
-        "id": "7b2395a11ee62a66",
+        "id": "40c5a76da5028e8d",
         "type": "tabs",
         "children": [
           {
-            "id": "3467fbb2a687fd92",
+            "id": "4ce34ce28f98ac8f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies.md",
+                "file": "2025-01-13 Autocorrelation of HMCs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies"
+              "title": "2025-01-13 Autocorrelation of HMCs"
             }
           },
           {
-            "id": "9cda0db0f32ce01c",
+            "id": "1b879e0b70377bc8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025-01-13 Autocorrelation of.md",
+                "file": "2026-01-15 Expectations of Wishart Distributions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-13 Autocorrelation of"
+              "title": "2026-01-15 Expectations of Wishart Distributions"
+            }
+          },
+          {
+            "id": "e0eeaa392f126652",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2025-01-13 Autocorrelation of HMCs.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-01-13 Autocorrelation of HMCs"
             }
           }
         ],
@@ -154,18 +168,18 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2025-01-13 Autocorrelation of.md"
+                "file": "2026-01-15 Expectations of Wishart Distributions.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025-01-13 Autocorrelation of"
+              "title": "Outline of 2026-01-15 Expectations of Wishart Distributions"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -174,20 +188,32 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "9cda0db0f32ce01c",
+  "active": "1b879e0b70377bc8",
   "lastOpenFiles": [
-    "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies.md",
-    "2025-01-13 Autocorrelation of.md",
-    "2025-01-13 dimensional scaling.png",
-    "2025-01-13 Sequential Importance Sampling.md",
-    "2025-01-12 Note on HMC Problems to Yifan.md",
-    "2025-01-13 Importance Sampling.md",
+    "2025-01-13 Autocorrelation of HMCs.md",
+    "2026-01-15 Expectations of Wishart Distributions.md",
+    "2026-01-13 First Moment SideHMC.png",
+    "2026-01-13 Second Moment SideHMC.png",
+    "integrated autocorrelation time.md",
+    "Untitled.md",
     "To Do.md",
-    "2025-01-10 Jarzynski's equality.md",
     "Blogs that are Nice.md",
+    "2026-01-14.md 19-52-18-810.md",
+    "2025-01-13 Importance Sampling.md",
+    "2026-01-14.md",
+    "2025-01-09 problems.png",
+    "202601141525.md",
+    "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies.md",
+    "2025-01-13 Sequential Importance Sampling.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "2025-01-13 dimensional scaling.png",
+    "2025-01-12 Note on HMC Problems to Yifan.md",
+    "2025-01-10 Jarzynski's equality.md",
     "2025-01-12 Nested Sampling.md",
     "2025-01-12 rv.png",
     "2025-01-12 posterior corner.png",
@@ -195,7 +221,6 @@
     "2025-01-12 raw rv data.png",
     "2025-01-09 Transformers.md",
     "2025-01-09 Generative Modeling from Black-box Corruptions.md",
-    "2025-01-09 problems.png",
     "Untitled",
     "Welcome.md"
   ]
