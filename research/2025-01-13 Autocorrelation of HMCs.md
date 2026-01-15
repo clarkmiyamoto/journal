@@ -13,22 +13,29 @@ debugInConsole: false # Print debug info in Obsidian console
 # Leapfrog Integrators
 The leapfrog integrators of interest
 - **Regular leapfrog**: $(\tilde x, \tilde p) = \text{Leapfrog}_{t, M}(x, p)$ are the proposed steps using the leapfrog integrator for a total time $t$ with a mass matrix $M$. Where $x \in \mathbb R^d$ and $p \in \mathbb R^d$.
+
 $$
 \frac{dx}{dt} = M^{-1} \, p , \ \frac{dp}{dt}= -\nabla V(x )
 $$
+
 - **Walk-move leapfrog**: $(\tilde x, \tilde p) = \text{Leapfrog}_{t, B} (x, p)$, where $x \in \mathbb R^d$ and $p \in \mathbb R^{N/2}$.
+
 	$$
 	\frac{d x}{dt} = B \, p, \ \frac{dp}{dt} = - B^T \nabla V(x) 
 	$$
+
 	where $B \in \mathbb R^{d \times N/2}$ is the centered positions of the component ensemble. Note that when the ensemble reaches equilibrium, $\mathbb E[B B^T] = \Sigma$ . 
 - **Side-move leapfrog**: where $x \in \mathbb R^d$ and $p \in \mathbb R$
+
 	$$
 	\frac{dx}{dt} = \frac{1}{\sqrt{2d}}(x_i - x_j) p  , \ \frac{dp}{dt} = -\frac{1}{\sqrt{2d}}(x_i - x_j)^T \nabla V(x)
 	$$
+
 	where $x_i, x_j \in \mathbb R^d$ are the positions of two randomly chosen walkers from the complement ensemble.
 
 # Note on Autocorrelation
 Given a sequence of random variables $X_1, X_2, ...$ the lag-k autocorrelation $\rho_k$ is given by
+
 $$
 \rho_k = \frac{\mathbb E[(X_t - \mu)(X_{t+k} -\mu)]}{\mathbb E[(X_{t} - \mu)^2]} = \frac{\text{Cov}(X_{t+k}, X_t)}{\text{Var}(X_t)}
 $$where $\mu$ is the stationary mean. Note the random variables can be transformations $X_i = f(\theta_i)$ of the outputs of the MCMC algorithm.
@@ -40,7 +47,9 @@ Properties
 
 The [[integrated autocorrelation time]] is given by "integrating" (summing) up all the lag-k autocorrelations.
 $$
+
 \rho = \sum_{k=-\infty}^\infty \rho_k = 1 + 2 \sum_{k=1}^\infty \rho_k
+
 $$
 Now we can get to the interesting part...
 # Analysis of Lag 1 Autocorrelation
@@ -53,11 +62,15 @@ We can still assume the Gaussian has zero mean, and only diagonal components. Be
 **Outline of analysis**
 We are analyzing the distribution
 $$
+
 p = \mathcal N(0, \Sigma), \ [\Sigma]_{ii} = \sigma_i^2
+
 $$
 Meaning the potential $V(x)$ (aka negative log-likelihood without normalization constant) is given by
 $$
+
 V(x) = \frac{1}{2}x^T \Sigma^{-1} x \implies \nabla V(x) = \Sigma^{-1} x
+
 $$
 In the lag-1 autocorrelation, let $X_{t+1}$ to be the output after using leapfrog dynamics for total time $T = \epsilon L$ (in the limit where the discretization error $\epsilon \to 0$ holding $\epsilon L$ constant, allowing us to use exact Hamiltonian dynamics).
 1. Calculate the equations of motion. That is $(\tilde x, \tilde p) = \text{Leapfrog}(x, p)$
@@ -65,7 +78,9 @@ In the lag-1 autocorrelation, let $X_{t+1}$ to be the output after using leapfro
 ## Regular Leapfrog
 The equations of motion for $V(x) = \frac{1}{2} x^T \Sigma^{-1} x$ is
 $$
+
 \frac{dx}{dt} = M^{-1} \, p , \ \frac{dp}{dt}=  \Sigma^{-1}x
+
 $$
 where $p(0) \sim \mathcal N(0, M)$.
 
@@ -90,13 +105,17 @@ The only weird thing to calculate is $\mathbb E[\tilde x_i x_i]$ $$
 \end{align}
 $$Therefore the first moment's lag-1 autocorrelation is 
 $$
+
 \rho_1 = \cos(\omega_i t)
+
 $$
 - Not affine invariant. To get good autocorrelation in all dimension,  you need to tune the mass matrix.
 ### Second Moment's Lag-1 Autocorrelation
 Take $X = f(x)$, where $f(x) = x^2$.
 $$
+
 \rho^{(2)}= \frac{\mathbb E[(x^2 - \mathbb E[x^2])(\tilde x^2 -\mathbb E[x^2])]}{\mathbb E[(x^2 - \mathbb E[x^2])^2]}
+
 $$
 Assuming the chain is already at stationarity, $\mathbb E[x_i^2] = \sigma_i^2$ and $\mathbb E[x_i^4] = 6 \sigma_i^4$.
 
@@ -106,14 +125,18 @@ The denominator becomes $$
 & = 5 \sigma_i^4
 \end{align}
 $$
+
 The numerator is more lengthy
+
 $$
 \begin{align}
 \mathbb E[(x^2 - \mathbb E[x^2])(\tilde x^2 -\mathbb E[x^2])] & = \mathbb E[x^2 \tilde x^2 - \tilde x^2 \mathbb E[x^2] - x^2 \mathbb E[x^2] + \mathbb E[x^2]^2]\\
 & = \mathbb E[x^2 \tilde x^2] -  \mathbb E[\tilde x^2] \mathbb E[x^2] 
 \end{align}
 $$
+
 We can now compute
+
 $$
 \begin{align}
 \tilde x^2 & = x^2 \cos^2(\omega t)  + \frac{p^2}{m^2 \omega^2} \sin^2 (\omega t) + \frac{x \, p}{m \omega} \cos(\omega t) \sin(\omega t)\\
@@ -121,28 +144,35 @@ $$
 \mathbb E[x^2 \tilde x^2] & = 6 \sigma^4 \cos^2(\omega t) + \frac{\sigma^2}{\omega^2} \sin^2(\omega t)
 \end{align}
 $$
+
 Thus the second moment lag-1 autocorrelation becomes
+
 $$
 \begin{align}
 \rho^{(2)} = \frac{5 \sigma^4_i \cos^2(\omega_i t)}{5 \sigma_i^4} =  \cos^2(\omega_i t) = \frac{1}{2} ( 1 + \cos(2 \omega_i t))
 \end{align}
 $$
+
 - One again not affine invariant.
 - Interestingly the time when the autocorrelation is zero is the same for $\rho^{(1)}$
 ## Side-Move Leapfrog
 The state space is $x \in \mathbb R^d$ and $p \in \mathbb R$, with the dynamics
+
 $$
 \frac{dx}{dt} = v p  , \ \frac{dp}{dt} = -v^T \Sigma^{-1} x
 $$
+
 where $v \equiv \frac{1}{\sqrt{2d}}(x_i - x_j)$ s.t. $x_i, x_j \in \mathbb R^d$ are the positions of two randomly chosen walkers from the complement ensemble. At the beginning of the dynamics $p(0) \sim \mathcal N(0, 1)$
 
 This yields the dynamics projected along $v$ in the $\Sigma^{-1}$ metric
+
 $$
 \begin{align}
 x(t) & = x(0) - v\frac{v^T \Sigma^{-1} x(0)}{\omega^2} + v \frac{v^T \Sigma^{-1} x(0)}{\omega^2} \cos(\omega t) + \frac{v\, p(0)}{\omega} \sin(\omega t)\\
 p(t) & = p(0) \cos(\omega t) - \frac{v^T \Sigma^{-1} x(0)}{\omega} \sin(\omega t)
 \end{align}
 $$
+
 where $\omega  = \sqrt{v^T \Sigma^{-1} v}$.
 
 Assume the chain is already at stationarity for a target distribution $\pi = \mathcal N(0, \sigma^2 \mathbb I_d)$, therefore $x(0) \sim \pi$ and $p(0) \sim \mathcal N(0, 1)$. Also assume the complement walkers $x_i, x_j \sim^{iid} \pi$ and are independent from $x(0)$. I'll also note that $x_i - x_j \sim \mathcal N(0, 2 \sigma^2 \mathbb I_d)$, therefore $v \sim \mathcal N(0, \tfrac{\sigma^2}{d} \mathbb I_d)$. 
@@ -152,17 +182,22 @@ This means that $\omega = \|z\| / \sqrt{d}$, where $z \sim \mathcal N(0, \mathbb
 I choose $\sigma^2 \mathbb I_d$ for the covariance because it captures the scaling, which gave troubles in previous because a generic covariance matrix (and even $\text{diag}(\sigma_1^2 ,..., \sigma_d^2)$) appears to be too difficult.
 
 Looking ahead, we need to perform autocorrelation analysis on an 1d variable. The dynamics is projected in the direction of $v$, so we should inspect a the parallel direction $\hat v = v / \|v\|$, where $\|v\| = \sqrt{v^2}$
+
 $$
 \begin{align}
 x_v & \equiv x(0) \cdot \hat v - \|v\|\frac{v^T \Sigma^{-1} x(0)}{\omega^2} + \|v\| \frac{v^T \Sigma^{-1} x(0)}{\omega^2} \cos(\omega t) +  \|v\| \frac{p(0)}{\omega} \sin(\omega t)\\
 \end{align}
 $$
+
 ### First-Moment's Lag-1 Autocorrelation
 Recall the lag-1 autocorrelation is given by
+
 $$\rho^{(1)}= \frac{\mathbb E[(x_v - \mathbb E[x_v])(\tilde x_v -\mathbb E[x_v])]}{\mathbb E[(x_v - \mathbb E[x_v])^2]}$$
+
 There are few new things to compute
 
 In the denominator
+
 $$
 \begin{align}
 \mathbb E[x_v] & =  \sum_i \mathbb E [x_i] \mathbb E[ \frac{\hat v_i}{\|v\|}] = 0\\
@@ -171,24 +206,32 @@ $$
 & = \sum_{i=1}^d \sigma^2 \frac{1}{d} = \sigma^2
 \end{align}
 $$
+
 Meaning the denominator in total is just $\sigma^2$. 
 
 Now for the numerator, which has a fair amount of parts
+
 $$
 \mathbb E[(x_v - \mathbb E[x_v])(\tilde x_v -\mathbb E[x_v])] = \mathbb E[x_v \tilde x_v] - \mathbb E[\tilde x_v]\mathbb E[x_v] 
 $$
+
 The proposed position
+
 $$
 \begin{align}
 \mathbb E[\tilde x_v] & = \mathbb E[x \cdot \hat v] - \mathbb E \left[ \|v \|\frac{v^T \Sigma^{-1} x(0)}{\omega^2} \right] + \mathbb E\left[ \|v \| \frac{v^T \Sigma^{-1} x(0)}{\omega^2} \cos(\omega t) \right]    + \mathbb E\left[\|v\| \frac{\sin(\omega t)}{\omega} \right] \mathbb E[p(0)]  = 0\\
 
 \end{align}
 $$
+
 and the correlation between current and proposed
+
 $$
 \mathbb E[\tilde x_v x_v] = \mathbb E[(x \cdot \hat v)^2]  - \mathbb E \left[  (x \cdot v) \frac{v^T x}{\sigma^2 \omega^2 }\right] + \mathbb E \left[  (x \cdot v) \ \frac{v^T x}{\sigma^2\omega^2}\cos(\omega t)\right] 
 $$
+
 The middle term is secretly $\mathbb E[(x\cdot v) \tfrac{v^T x}{\sigma^2 \omega^2}] = \mathbb E[(x \cdot \hat v)^2]$, meaning only the last scary term contributes.
+
 $$
 \begin{align}
 \mathbb E \left[ x \cdot v \ \frac{v^T x}{\sigma^2\omega^2}\cos(\|z\| t/\sqrt{d})\right] & = \mathbb E\left[\frac{(x \cdot v)^2}{v^2} \cos (\|z\| t/\sqrt{d}) \right]\\
@@ -201,12 +244,15 @@ $$
 & = \sigma^2 \, {}_1 F_1 \left(\frac{d}{2}; \frac{1}{2} ;- \frac{ t^2}{2 d} \right)
 \end{align}
 $$
+
 The last integral was evaluated using Claude, verified by Mathematica. Note that $| {}_1 F_1 (n; 1/2; - \tau^2) | < 1$ for $n \in \mathbb N$ and $\tau \in \mathbb R$, so it has a property that the autocorrelation has.
 
 So in total, the first moment (projected along the chosen direction) has a lag-1 autocorrelation of
+
 $$
 \rho^{(1)} = {}_1F_1 \left(\frac{d}{2}; \frac{1}{2} ;- \frac{t^2}{2d} \right)
 $$
+
 Here's a picture of the result. 
 ![[2026-01-13 First Moment SideHMC.png]]
 - The result is affine invariant!
@@ -220,19 +266,24 @@ Here's a picture of the result.
 
 ### Second-Moment's Lag-1 Autocorrelation
 Nothing nice comes for free. Recall the second moment' lag-1 autocorrelation is given by
+
 $$\rho^{(2)}= \frac{\mathbb E[(x_v^2 - \mathbb E[x_v^2])(\tilde x_v^2 -\mathbb E[x_v^2])]}{\mathbb E[(x_v^2 - \mathbb E[x_v^2])^2]} = \frac{\mathbb E[x_v^2 \tilde x_v^2] - \mathbb E[\tilde x_v^2] \mathbb E[x_v^2]}{\mathbb E[x_v^4] - \mathbb E[x_v^2]^2}$$
+
 Let's try the denominator
+
 $$
 \begin{align}
 \mathbb E[x_v^4] & = \mathbb E[(x \cdot  \hat v)^4]\\
 & = 3 \sigma^4
 \end{align}
 $$
+
 To evaluate this, you need to realize that $x \cdot \hat v \sim \mathcal N(0, \sigma^2)$. 
 
 Ok onto the evil numerator
 
 The first term is
+
 $$
 \begin{align}
 \mathbb E[\tilde x_v^2] & =  \mathbb E \left[ \left (x \cdot \frac{v}{\|v\|} - \frac{v^T x}{\|v\|} + \frac{v^T  x}{ \|v\|} \cos( \omega t) +  \frac{p}{ \|v\|} \sin(\omega t) \right )^2 \right]\\
@@ -241,9 +292,11 @@ $$
 & = \sigma^2 \, \mathbb E\left [ \cos^2 (\| z \| t / \sqrt{d}) \right] + \frac{d}{\sigma^2}\mathbb E\left[ \frac{\sin^2 (\|z\| t / \sqrt{d]})}{\|z\|^2 }\right]
 \end{align}
 $$
+
 For the $\cos^2$ term, we can use the trig identity $\cos^2(x) = \frac{1}{2}(1 + \cos(2 x))$, and then evaluate the integral directly. For the $\sin^2$ we can use $\sin^2(x) = \frac{1}{2}(1 - \cos(2x))$ 
 
 So the new formulas required are
+
 $$
 \begin{align}
 \mathbb E[1/\|z\|^2] & = \frac{1}{d-2}\\
@@ -253,11 +306,14 @@ $$where were calculated using mathematica. Due to the $1/z^2$ term, these are on
 
 The final expression for the first term is
 $$
+
 \mathbb E[\tilde x^2_v] = \frac{\sigma^2}{2}\left(1 + {}_1F_1\left(\frac{d}{2}; \frac{1}{2}; -\frac{2t^2}{d}\right)\right) + \frac{d}{2\sigma^2(d-2)}\left(1 - {}_1F_1\left(\frac{d-2}{2}; \frac{1}{2}; -\frac{2t^2}{d}\right)\right)
+
 $$
 
 The second term is
 $$
+
 \begin{align}
 \mathbb E[\tilde x_v^2 x_v^2] & =  \mathbb E \left [ \left(\frac{v^T  x}{ \|v\|} \cos( \omega t) +  \frac{p}{ \|v\|} \sin(\omega t) \right )^2 (x \cdot \hat v)^2\right]\\
 & = \mathbb E \left[ \left( (x \cdot \hat v)^2 \cos( \omega t) +  p\, \frac{x \cdot \hat v}{ \|v\|} \sin(\omega t) \right )^2 \right]\\
@@ -265,20 +321,25 @@ $$
 & = \mathbb E\left[ (x \cdot \hat z)^4 \cos^2 (\|z \| t/\sqrt{d})  + p^2 \frac{d}{\sigma^2} \frac{(x\cdot \hat z)^2}{z^2} \sin^2 ( \|z\| \, t / \sqrt d)\right]\\
 & = \mathbb E [(x \cdot \hat z)^4 \cos^2 (\|z \| t/\sqrt{d})] + \frac{d}{\sigma^2} \mathbb E \left[ \frac{(x\cdot \hat z)^2}{z^2} \sin^2 ( \|z\| \, t / \sqrt d) \right]
 \end{align} 
+
 $$
 For the first term, we can use the fact that if $z \sim \mathcal N(0, \mathbb I_d)$ then  $\hat z \perp \|z\|$
 $$
+
 \begin{align}
 \mathbb E [(x \cdot \hat z)^4 \cos^2 (\|z \| t/\sqrt{d})] & = \mathbb E[(x \cdot \hat z )^4] \, \mathbb E[\cos^2 (\|z \| t / \sqrt{d})]\\
 & = \frac{3\sigma^4 }{2} \left(1 + {}_1 F_1 \left( \frac{d}{2} ; \frac{1}{2} ; - \frac{2 t^2}{d}\right) \right)
 \end{align}
+
 $$
 As for the second term
 $$
+
 \begin{align}
 \mathbb E \left[ \frac{(x\cdot \hat z)^2}{z^2} \sin^2 ( \|z\| \, t / \sqrt d) \right] & = \mathbb E[(x \cdot \hat z)^2] \mathbb E\left[\frac{\sin^2( \|z \| t / \sqrt{d})}{z^2} \right]\\
 & = \frac{\sigma^2}{2(d - 2)} \left (1 - {}_1 F_1 \left( \frac{d-2}{2} ; \frac{1}{2} ; - \frac{2t^2}{d} \right)\right)
 \end{align}
+
 $$
 Putting it all together the second moment lag-1 autocorrelation is$$
 \rho^{(2)} = \frac{1}{2}\left(1 + {}_1F_1\left(\frac{d}{2}; \frac{1}{2}; -\frac{2t^2}{d}\right)\right)
@@ -290,26 +351,32 @@ $$![[2026-01-13 Second Moment SideHMC.png]]
 ## Walk-Move Leapfrog
 The equations of motion
 $$
+
 	\frac{d x}{dt} = B \, p, \ \frac{dp}{dt} = - B^T \Sigma^{-1} x
+
 $$
 where $B \in \mathbb R^{d \times N/2}$ is the centered positions of the complement ensemble. Note that $p \sim \mathcal N(0, \mathbb I_{N/2 \times N/2})$ this time. To be specific on the structure of $B$, it looks like
 
 $$
+
 B = \begin{pmatrix}
  |  & ... & |\\
  \vec a_1 - \frac{1}{N/2}\sum_{i=1}^{N/2} \vec a_i & ... & \vec a_{N/2} - \frac{1}{N/2}\sum_{i=1}^{N/2} \vec a_i\\
  | & ... & |
 \end{pmatrix}
+
 $$
 where $\vec a_i$ is the position of the $i$'th complement walker.
 
 The equations of motions can be written by exponentiation the time-evolution operator.
 $$
+
 \begin{align}
 	\begin{pmatrix} x(t) \\ p(t)\end{pmatrix} & = \exp\left[ t \begin{pmatrix} 0 & B \\ - B^T \Sigma^{-1} & 0 \end{pmatrix}  \right]\begin{pmatrix} x(0) \\ p(0)\end{pmatrix}\\
 	x(t) & = \cos(\Omega_x t)x(0) + \Omega^{-1}_x  B \sin(\Omega_x t) p(0)\\
 	p(t) & = \cos(\Omega_p) \, p(0) - \Omega_p^{-1} B^T \Sigma^{-1} \sin(\Omega_p t) \, x(0)
  \end{align}
+
  $$
 
 where $\Omega_x = \sqrt{BB^T \Sigma^{-1}} \in \mathbb R^{d \times d}$  and $\Omega_p = \sqrt{B^T \Sigma^{-1} B} \in \mathbb R^{N/2 \times N/2}$.
@@ -323,20 +390,26 @@ Consider the first moment's autocorrelation
 $$\rho^{(1)}= \frac{\mathbb E[(x - \mathbb E[x])(\tilde x -\mathbb E[x])]}{\mathbb E[(x - \mathbb E[x])^2]}$$
 The proposed position
 $$
+
 \mathbb E[\tilde x] = \mathbb E[\cos(\Omega_x t)] \mathbb E[x] + \mathbb E[\Omega^{-1}_x  B \sin(\Omega_x t)] \mathbb E[ p(0)] = 0
+
 $$
 The overlap between proposed & original position
 $$
+
 \begin{align}
 \mathbb E[\tilde x x] & = \mathbb E[\cos(\Omega_x t)] \mathbb E[x^2]\\
 & = \sigma^2 \mathbb E[\cos (\Omega_x t)] 
 \end{align}
+
 $$
 
 $$
+
 \begin{align}
 \sqrt{BB^T} & = U \Lambda^{1/2} U^T\\
 \cos(x) = \sum_{n} a_n x^{2n}\\
 \cos(\sqrt{BB^T} x ) = U \cos(\Lambda^{1/2} x) U^T
 \end{align}
+
 $$
