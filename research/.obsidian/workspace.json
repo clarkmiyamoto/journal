@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "40c5a76da5028e8d",
+        "id": "8e99162676e9a6dd",
         "type": "tabs",
         "children": [
           {
-            "id": "4ce34ce28f98ac8f",
+            "id": "2db7aad276d3ef58",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025-01-13 Autocorrelation of HMCs.md",
+                "file": "2026-02-03 Implementation of Stochastic Interpolants.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-13 Autocorrelation of HMCs"
-            }
-          },
-          {
-            "id": "e0eeaa392f126652",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025-01-13 Autocorrelation of HMCs.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025-01-13 Autocorrelation of HMCs"
+              "title": "2026-02-03 Implementation of Stochastic Interpolants"
             }
           }
         ]
@@ -54,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabeticalReverse"
+                "sortOrder": "alphabeticalReverse",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -107,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2025-01-13 Autocorrelation of.md",
+                "file": "2026-01-20 Autocorrelation or Acceptance Probability of Leapfrog + MH.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2025-01-13 Autocorrelation of"
+              "title": "Backlinks for 2026-01-20 Autocorrelation or Acceptance Probability of Leapfrog + MH"
             }
           },
           {
@@ -126,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2025-01-13 Autocorrelation of.md",
+                "file": "2026-01-20 Autocorrelation or Acceptance Probability of Leapfrog + MH.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 2025-01-13 Autocorrelation of"
+              "title": "Outgoing links from 2026-01-20 Autocorrelation or Acceptance Probability of Leapfrog + MH"
             }
           },
           {
@@ -141,7 +128,9 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
@@ -153,10 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2025-01-13 Autocorrelation of HMCs.md"
+                "file": "To Do.md",
+                "followCursor": true,
+                "showSearch": true,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025-01-13 Autocorrelation of HMCs"
+              "title": "Outline of To Do"
             }
           }
         ],
@@ -164,49 +156,60 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "4ce34ce28f98ac8f",
+  "active": "2db7aad276d3ef58",
   "lastOpenFiles": [
-    "integrated autocorrelation time.md",
+    "2026-01-30 Sampling Meeting \"Parallelizing MCMC Across  Sequence Length\".md",
+    "2026-02-03 Code in Obsidian.md",
+    "2026-02-06 Stochastic Resetting.md",
+    "2026-02-06 Introduction to Generative Modeling & Sampling.md",
+    "Untitled.md",
+    "2026-02-06 Finite-Time Analysis of Discrete-Time Stochastic Interpolants.md",
+    "2026-02-04 Chat with Chirag Modi about SCSI.md",
+    "2026-02-03 Implementation of Stochastic Interpolants.md",
+    "2026-02-03 Reflecting on Teaching E&M.md",
+    "2026-01-31 CORDS  Continuous Representations of Discrete Structures.md",
+    "2026-02-01 Flows, Learning velocities with intermediates & transition amplitudes.md",
+    "2026-01-30 Paper \"Scale Adaptive Generative Flows for Multiscale Scientific Data\".md",
+    "2026-01-16 Probability Inequalities.md",
+    "2025-01-09 Generative Modeling from Black-box Corruptions.md",
+    "2025-01-12 Nested Sampling.md",
+    "2025-01-10 Jarzynski's equality.md",
+    "2025-01-12 Note on HMC Problems to Yifan.md",
+    "2025-01-12 raw rv data.png",
     "2025-01-13 Autocorrelation of HMCs.md",
+    "2025-01-13 Importance Sampling.md",
+    "2025-01-13 Sequential Importance Sampling.md",
     "2026-01-15 Expectations of Wishart Distributions.md",
+    "2026-01-15 Second Moment WalkHMC.png",
+    "2026-01-16 dimensional scaling.png",
+    "2026-01-16 Dimensional Scaling & Optimally Tuned Matricies.md",
+    "2026-01-17 Autocorrelation of Discrete Dynamics HMCs.md",
+    "2026-01-20 Dimensional Scaling of Query Time+ Optimally Tuned Mass Matrix +.md",
+    "2026-01-22 Neural Tangent Kernel.md",
+    "2026-01-26 Flow Map Matching.md",
+    "2026-01-13 First Moment SideHMC different dimensional scaling.png",
+    "2025-01-12 rv.png",
+    "2026-01-13 First Moment WalkHMC.png",
     "2026-01-13 First Moment SideHMC.png",
     "2026-01-13 Second Moment SideHMC.png",
-    "Untitled.md",
-    "To Do.md",
-    "Blogs that are Nice.md",
-    "2026-01-14.md 19-52-18-810.md",
-    "2025-01-13 Importance Sampling.md",
-    "2026-01-14.md",
     "2025-01-09 problems.png",
-    "202601141525.md",
-    "2025-01-13 Dimensional Scaling & Optimally Tuned Matricies.md",
-    "2025-01-13 Sequential Importance Sampling.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
-    "2025-01-13 dimensional scaling.png",
-    "2025-01-12 Note on HMC Problems to Yifan.md",
-    "2025-01-10 Jarzynski's equality.md",
-    "2025-01-12 Nested Sampling.md",
-    "2025-01-12 rv.png",
     "2025-01-12 posterior corner.png",
-    "2025-01-12 posterior velocities.png",
-    "2025-01-12 raw rv data.png",
-    "2025-01-09 Transformers.md",
-    "2025-01-09 Generative Modeling from Black-box Corruptions.md",
-    "Untitled",
-    "Welcome.md"
+    "Untitled"
   ]
 }

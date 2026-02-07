@@ -9,6 +9,9 @@
 
 
 ### Mathematics
+- Francis Bach (ENS): https://francisbach.com/
+- Djalil Chafaï (Université Paris-Dauphine, ENS): https://djalil.chafai.net/blog/
 - Simon Coste (Universite de Paris): https://scoste.fr/
 - Christian Robert (Universite de Paris, University of Warwick): https://xianblog.wordpress.com/
+
 
