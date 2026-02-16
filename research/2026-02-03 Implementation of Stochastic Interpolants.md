@@ -235,5 +235,54 @@ for t in ts:
 print(xt) # Final result!
 ```
 
-___
-Yep that's it!
+## Score
+A peculiar quantity of interest is the score $s_t = \nabla \log p_t$. We can derive this by inspecting the Transport equation
+$$
+\begin{align}
+\partial_t p_t & = -\nabla \cdot (b_t \, p_t)\\
+ & = -(\nabla \cdot b_t) p_t - b_t \cdot \nabla  p_t\\
+ \partial \log p_t & = - \nabla \cdot b_t - b_t \cdot \nabla \log p_t
+\end{align}
+$$
+
+
+
+# Non-Deterministic Inference
+## Forward Fokker Planck
+Assume you've already learned the drift $b_t(x) = \mathbb E[\dot I_t | I_t = x]$ for the transport equation $\partial_t p_t = -\nabla \cdot (b_t \, p_t)$... It would be interesting to be able to do the diffusion inference (SDE). So perhaps we can adapt our previous method using the Fokker Planck equation?
+
+Recall the FPE:
+$$
+\begin{align}
+\partial_t p_t = - \nabla \cdot (b^F_t \, p_t) + \epsilon_t\Delta(p_t)
+\end{align}
+$$
+Now we have to ask, what is the $\mu_t, \sigma_t$ s.t. $\text{Law}(I_t) = p_t$. You'll find you only have to specify the drift field:
+$$
+b^F_t = b_t + \epsilon_t s_t(x)
+$$
+where $b_t$ is the previously defined drift, $s_t(x)$ is the score. It's easy to see, by just plugging it in
+$$
+\begin{align}
+\partial_t p_t & = - \nabla\cdot (b_t p_t) - \nabla \cdot(\epsilon_t s_t \, p_t) + \epsilon_t \Delta(p_t)\\
+\partial_t p_t & = \partial_t p_t - \nabla \cdot(\epsilon_t s_t \, p_t) + \epsilon_t \Delta(p_t) & \text{Transport equation}\\
+0 & = -\epsilon_t \nabla \cdot(\nabla \log p_t \, p_t) + \epsilon_t \Delta (p_t) & s_t= \nabla \log p_t\\
+0 & = 0 & \nabla \log p_t \, p_t = \nabla p_t
+\end{align}
+$$
+In the transport equation, you've forced that density is equal to our current density. Meaning this solution satisfies $\text{Law}(I_t) = p_t$.
+
+At inference time, we use our map between the PDE and SDE to transport the samples in practice
+$$
+dX_t = b_t^F(X_t) p_t + \sqrt{2 \epsilon_t} dW_t
+$$
+
+## Backwards Fokker Planck
+A classical result in non-equlibrium phyiscs is to inverse the time (at the pdf level). This results in the backwards FPE
+$$
+\partial_t p_t = - \nabla \cdot (b^B_t \, p_t) - \epsilon_t\Delta(p_t)
+$$
+By a similar derivation you'll find the drift field which causes $\text{Law}(I_t) = p_t$ 
+$$
+b^B_t = b_t - \epsilon_t s_t
+$$

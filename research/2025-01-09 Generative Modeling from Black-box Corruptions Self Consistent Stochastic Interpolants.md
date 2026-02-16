@@ -61,7 +61,7 @@ $$
 Let $\Phi_\Theta$ be the backwards transport map induced by $\Theta$; that is $\Phi_\Theta(X_1) = X_0$. 
 
 ### Self-Consistency Modification
-The interpolant in (Eq 2) defines a map between $\pi$ (signal, target) and $\mu$ (experiment). However, we don't have access to $\pi$.
+The **interpolant** in (Eq 2) defines a map between $\pi$ (signal, target) and $\mu$ (experiment). However, we don't have access to $\pi$.
 
 We can instead modify the interpolant using the simulator $\mathcal F$
 $$
@@ -75,7 +75,6 @@ We can attempt to iteratively enforce this by constructing
 $$
 I_t^{(k+1)} = \alpha_t \Phi_{\Theta^{(k)}}(y)+ \beta_t \mathcal F(\Phi_{\Theta^{(k)}}(y)) + \gamma_t z, \ y \sim \mu
 $$
-where $
 
 We get the following Algorithm
 1. Initialize $\Theta \leftarrow \Theta^{(0)}$

@@ -1,6 +1,6 @@
 #generative #stochasticinterpolants 
 
-Had a chat w/ [[Chirag Modi]] about his paper: [[2025-01-09 Generative Modeling from Black-box Corruptions]]. Here some summarized notes.
+Had a chat w/ [[Chirag Modi]] about his paper: [[2025-01-09 Generative Modeling from Black-box Corruptions Self Consistent Stochastic Interpolants]]. Here some summarized notes.
 
 # Notes
 
