@@ -39,11 +39,3 @@ $$
 \mathbb P_S(R(\theta)  >r(\theta) + s) \leq e^{-2ns^2/C^2}
 $$
 If we let the LHS be defined at $\delta$. We can get our proposition. QED.
-
-# PAC Bayes Bounds
-**Theorem** (McAllester 1999). For any $\delta > 0$
-$$
-\mathbb P_S\left(\mathbb E_{\theta \sim p}[R(\theta)] \leq \mathbb E_{\theta \sim p}[r(\theta)] + \sqrt{\frac{\text{KL}(p\| \pi) + \log \frac{1}{\delta} + \frac{5}{2} \log (n) + 8}{2n - 1}} \right) \geq1 -\delta
-$$
-
-

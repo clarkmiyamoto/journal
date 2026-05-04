@@ -1,5 +1,7 @@
 [
   "automatic-table-of-contents",
   "obsidian-linter",
-  "execute-code"
+  "execute-code",
+  "pseudocode-in-obs",
+  "obsidian-advanced-slides"
 ]

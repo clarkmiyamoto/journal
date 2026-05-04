@@ -250,5 +250,96 @@ The new idea is to sample
 
 
 
+Recall, we are in the setting of sampling. I have oracle access to the target distribution $\pi$ (up to normalizing constant). Last week we asked how to solve this using normalizing flows, today we'll look at applications of diffusion models.
+
+**Recap of Diffusion Models:** You generate data by sampling the conditional probability distribution.
+$$
+\begin{align}
+X_k \sim p^\theta_{k | k+1}(\cdot | X_{k+1})\\
+X_{k-1} \sim \mathcal N
+\end{align}
+$$
+such that $X_0 \sim \pi$. By the Euler Maruyama discretization, the conditional is a Gaussian where the mean is informed by the score.
+
+## Getting the best model parameters?
+We are tempted to do
+$$
+\begin{align}
+\text{KL}(p^\theta \| \pi) & = \mathbb E_{p^\theta}\left[\log \frac{p^\theta(x)}{\pi(x)}\right]\\
+p^\theta(x_0) & = \int p^\theta(x_0, ..., x_{K-1})  \, dx_{1:k-1}\\
+& = \int p(x_{K-1}) \prod_{k=0}^{K-2} p_{k | k+1} (x_k | x_{k+1}) \, dx_{1:k-1}
+\end{align}
+$$
+However in order to get oracle access to $p^\theta$, you need to do this huge marginalization integral. So you're screwed.
+
+Ok new idea! Consider $\text{KL}(p^\theta(x_0, ..., x_{k-1}) \| \pi(x_0, ..., x_{k-1}))$, where we've defined this new distribution
+$$
+\begin{align}
+p^\theta(x_0, ..., x_{k-1}) & = p_{x_{K-1}}\prod_{k} p_{k | k_{k+1}}^\theta\\
+\pi_{0:K-1} & \equiv \pi_0 \prod p_{k+1 | k}
+\end{align}
+$$
+where $\pi_0$ is the target distribution. I have denoted $p_{k+1|k} = \mathcal N(\alpha_{k+1 | k} x_k , \sigma^2_{k+1|k})$ as the forward process of your diffusion model. So now your KL becomes
+$$
+\begin{align}
+& = \mathbb E_{p_{0:K-1}^\theta} \left[\frac{p^\theta_{0:K-1}(x_{0:K-1})}{\pi_{0:K-1}(x_{0:K-1})} \right] \\
+& = \mathbb E_{p^\theta_{0:K-1}}\left[ \log \frac{p(x_{K-1})}{\pi(x_0)} + \sum_k \log \frac{p^\theta_{k | k-1}}{p_{k+1 | k}}\right]
+\end{align}
+$$
+Now everything is computable, so we're happy.
+- An advantage is this no longer has the mode seeking behavior of last week. However we're still using the $\text{KL}(p^\theta \| \pi)$ so what's happening? Well you're not multimodal anymore, because diffusion models learn "tunnels" along the joint.
+- The downside is
+	- Because you're optimizing on the joint space, now the dimension just exploded.
+	- Another is because the transition kernel is created by the Euler Maruyama discretization, the (minimization of your KL doesn't truly get the optimal $\theta$ (this is a biased estimator)
+
+## Calculating Expectations using Importance Sampling
+Recall the importance sampling trick
+$$
+\mathbb E_{\pi}[f(x)] = \mathbb E_{p^\theta} \left[\frac{\pi(x)}{p^\theta(x)}\, f(x) \right]
+$$
+If you think about it, this can work on a joint space 
+$$
+\begin{align}
+\mathbb E_{\pi_0} [ f(x_0)] & = \int f(x_0) \pi_{0:K-1}(x_{0:K-1}) dx_{0:K-1}\\
+& = \int f(x_0) \frac{\pi_{0:K-1}(x_{0:K-1})}{p^\theta_{0:K-1}(x_{0:K-1})} p^\theta_{0:K-1}(x_{0:K-1}) \, dx_{0:K-1}\\
+& = \mathbb E_{p^\theta_{0:K-1}}\left[ \frac{\pi_{0:K-1}(x_{0:K-1})}{p^{\theta}_{0:K-1}(x_{0:K-1})} \, f(x_0)\right]
+\end{align}
+$$
+So just recall, our optimization exploded the dimension, and now we're taking expectations over a high dimensional process. From the previous lecture, recall that importance sampling is very sensitive in high dimensions, so you've gotten more screwed.
+
+Now you know everything about diffusion sampling!
+
+# What Louis Likes
+1. **Iterative diffusion posterior sampling.**
+   The problem is optimizing $\text{KL}(p^\theta_{0:K-1} \| \pi_{0:K-1})$ is bad & difficult. What if I could estimate my scores without using neural networks. Recall that $$ \begin{align}
+   \nabla \log p_t(x_t)&  = \mathbb E_{x_0} \left[ -\frac{x_t - \alpha_t x_0}{\sigma_t^2} \Big | X_t = x_t  \right]\\
+   & = \int -\frac{x_t - \alpha_t x_0}{\sigma_t^2} p_{0|t}(x_0 | x_t) dx_0
+   \end{align}
+   $$ What is the transition kernel $p_{0|t}$? $$
+   \begin{align}
+   p_{0|t} \propto p_{t|0}(x_t | x_0) p_0(x_0)
+   \end{align}
+   $$ where $p_0 = \pi_0$ and $p_{t|0}$ is the forward noising process. The idea is to drop the neural networks, and estimate $\nabla \log p_t$ with MCMC. But the new question becomes how easy is it to sample $p_{0|t}$.
+2. **Bayesian inference with diffusion model prior**.
+   The goal is to sample a posterior $\pi(x | y) \propto \pi(y | x) \lambda(x)$ , where you have oracle access to the $\pi(y|x)$ is the likelihood, and $\lambda(x)$ is the prior. The question is how to sample from this.
+   Assume you have a diffusion model for the prior $\lambda(x)$. That means you have a score function $\nabla \log p_t$ ,which then iteratively let's you sample $\lambda(x)$. Can you build a new diffusion model from $\pi(x | y)$ from the already trained diffusion model $\lambda$; i'll denote the new score fucnction $\nabla \log q_t$.
+   
+   By Bayes' rule
+   $$
+   \begin{align}
+   q_t(x_t | y) & \propto q_t(y | x_t) p_t(x_t)\\
+   \nabla_{x_t} \log q_t(x_t | y)& =  \nabla_{x_t} \log q_t(y | x_t) + \nabla_{x_t} \log p_t(x_t)
+   \end{align}
+   $$
+   We know how to compute $\nabla_{x_t} \log p_t(x_t)$ (this is the score of the pretrained diffusion model), we don't know how to evaluate $\nabla \log q_t(y|x_t)$. Here's one way to get it
+   $$
+   \begin{align}
+   q_t(y | x_t) &= \int q(y | x_0, x_t) \, p_{0|t}(x_0 | x_t)\, dx_0\\
+   & = \pi(y | \mathbb E[x_0 | X_t = x_t])
+   \end{align}
+   $$
+   Where we've used (and evaluated) the Laplace approximation (bruh moment).
+   
+   
 
 

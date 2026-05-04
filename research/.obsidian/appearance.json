@@ -1,3 +1,9 @@
 {
-  "showRibbon": true
+  "showRibbon": true,
+  "translucency": true,
+  "enabledCssSnippets": [
+    "font"
+  ],
+  "textFontFamily": "NewComputerModern08",
+  "baseFontSize": 14
 }

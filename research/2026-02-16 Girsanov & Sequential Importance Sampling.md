@@ -2,6 +2,7 @@
 
 Reference
 - https://alexxthiery.github.io/notes/girsanov/girsanov.html
+- https://chewisinho.github.io/main.pdf
 
 Continuing my exposition on change of measures in stochastic process (see [[2026-02-15 Change of Variables, Cameron–Martin Formula, and Girsanov Theorem]]), I talk about a nice application of Girsanov's theorem & importance sampling.
 

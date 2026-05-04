@@ -45,7 +45,7 @@ $$
 where $\lambda_i$ is the $i$'th eigenvector of $M$.
 
 **Proof:**
-Consider the eigenvalue decomposition of the matrix $M = U \Lambda U^T$. This implies for any matrix function $f(M) = U f(\Lambda) U^T$. If $M \sim W_d(n, \Sigma)$, $U \sim \mu_H$ where $\mu_H$ is the Haar measure of $O(d)$ ($d \times d$ orthogonal matricies) and it's independent from $\Lambda$.
+Consider the eigenvalue decomposition of the matrix $M = U \Lambda U^T$. This implies for any matrix function $f(M) = U f(\Lambda) U^T$. If $M \sim W_d(n, \Sigma)$, $U \sim \mu_H$ where $\mu_H$ is the Haar measure of $O(d)$ ($d \times d$ orthogonal matricies) and it's independent from $\Lambda$. See https://cims.nyu.edu/~zeitouni/cupbook.pdf (Corollary 2.5.4).
 
 We can attempt to evaluate the Haar measure integral first. Let's look a generic problem
 

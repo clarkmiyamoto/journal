@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "827d0cc2f1a85190",
+        "id": "4c99636d23dfa598",
         "type": "tabs",
         "children": [
           {
-            "id": "65b3bae29793c4a8",
+            "id": "31e3c49ad0539676",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-02-16 PAC Bayes Bounds.md",
+                "file": "2026-05-01 SCSI Meeting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-16 PAC Bayes Bounds"
+              "title": "2026-05-01 SCSI Meeting"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#stochasticprocess",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 278.50271224975586
   },
   "right": {
     "id": "f788eaee6647fc85",
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "To Do.md",
+                "file": "2026-03-26 Chat with Evan, Perturbative Bounding.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of To Do"
+              "title": "Outline of 2026-03-26 Chat with Evan, Perturbative Bounding"
             }
           }
         ],
@@ -167,47 +167,54 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "zk-prefixer:Create new unique note": false
+      "zk-prefixer:Create new unique note": false,
+      "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "65b3bae29793c4a8",
+  "active": "31e3c49ad0539676",
   "lastOpenFiles": [
-    "2026-02-16 Girsanov & Sequential Importance Sampling.md",
+    "2026-05-01 Convergence of Gaussian + AWGN in Lifted SCSI.md",
+    "2026-05-01 SCSI Meeting.md",
+    "The Plan.md",
+    "Reading List.md",
+    "slides.md",
+    "2026-05-03.md",
+    "2026-04-28 Why we need separate noise sources.md",
+    "2026-04-28 Conditional Expectation of Jointly Gaussian Variables.md",
+    "2026-04-30 How to use NYU's Torch Cluster.md",
+    "NewCM08-Book 1.otf",
+    "NewCM08-Book.otf",
     "2026-02-16 PAC Bayes Bounds.md",
-    "2026-02-15 Change of Variables, Cameron–Martin Formula, and Girsanov Theorem.md",
-    "2026-02-13.md",
-    "Pasted image 20260215233131.png",
-    "2026-02-06 Finite-Time Analysis of Discrete-Time Stochastic Interpolants.md",
-    "2026-02-03 Reflecting on Teaching E&M.md",
-    "2026-02-03 Implementation of Stochastic Interpolants.md",
-    "2026-02-06 Introduction to Generative Modeling & Sampling Lecture by Louis.md",
-    "2026-02-04 Chat with Chirag Modi about SCSI.md",
-    "2026-02-10 Diffeomorphism Invariant Objects.md",
-    "2026-02-12 interpolant path.png",
-    "2026-02-12 Stochastic Interpolants over multiple distributions.md",
+    "2026-05-01 awgn mnist transformer.png",
+    "2026-04-27 Chat with Joan.md",
+    "2026-04-27 Consistency Models.md",
+    "2026-04-27 options.png",
     "Blogs that are Nice.md",
-    "Untitled 1.md",
+    "projects.hpc.nyu.edu.md",
     "Untitled.md",
-    "Screenshot 2026-02-12 at 12.33.32 AM.png",
-    "Louis Grenioux.md",
-    "2026-02-01 Flows, Learning velocities with intermediates & transition amplitudes.md",
-    "2025-01-09 Generative Modeling from Black-box Corruptions Self Consistent Stochastic Interpolants.md",
-    "2026-02-08 Tweedie's Formula.md",
-    "2026-02-06 Stochastic Resetting.md",
-    "2026-01-30 Sampling Meeting \"Parallelizing MCMC Across  Sequence Length\".md",
-    "2026-02-03 Code in Obsidian.md",
-    "2026-01-31 CORDS  Continuous Representations of Discrete Structures.md",
-    "2026-01-30 Paper \"Scale Adaptive Generative Flows for Multiscale Scientific Data\".md",
-    "2026-01-16 Probability Inequalities.md",
-    "2025-01-12 Nested Sampling.md",
-    "2025-01-10 Jarzynski's equality.md",
-    "2025-01-12 raw rv data.png",
-    "2026-01-15 Second Moment WalkHMC.png",
+    "().md",
+    "2026-04-30 Dumb idea I had before sleeping for lifted joint interpolant.md",
+    "To Do.md",
+    "2026-04-22 Training Stochastic Interpolants.md",
+    "2026-04-24 To Do.md",
+    "2026-04-20 Departure of SDEs.md",
+    "2026-04-01 Chat w Joan.md",
+    "2026-04-22 DFM Talk.md",
+    "2026-04-21 Asset Pricing.md",
+    "2026-02-20 Stochastic Process Identities.md",
+    "2026-04-17 Stein's Method in sampling.md",
+    "Untitled.base",
+    "2026-03-23 Simulation of GMM.png",
+    "2026-03-31 Denoising drift path.png",
+    "Untitled 1.base",
+    "Untitled 2.base",
+    "Untitled 3.base",
+    "2026-01-13 Second Moment SideHMC.png",
     "2026-01-16 dimensional scaling.png",
-    "2026-01-13 First Moment SideHMC different dimensional scaling.png",
-    "2025-01-12 rv.png",
+    "2026-01-15 Second Moment WalkHMC.png",
     "2026-01-13 First Moment WalkHMC.png",
-    "2026-01-13 First Moment SideHMC.png",
+    "Pasted image 20260215233131.png",
+    "2026-02-12 interpolant path.png",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Untitled"
