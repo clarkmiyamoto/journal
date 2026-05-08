@@ -26,13 +26,23 @@ $$
 \text{s.t. }B_k & = \Sigma_k(\Sigma_k + \sigma^2 \mathbb I)^{-1}
 \end{align}
 $$
-Let $\eta = \min (\lambda_{min}(\Sigma), \lambda_{min}(\Sigma_0))$ and assume $\eta > 0$, then
+Let $\eta_k = \min (\lambda_{min}(\Sigma), \lambda_{min}(\Sigma_k))$ and assume $\eta > 0$, then
 $$
 \begin{align}
-\boxed{\|\Sigma - \Sigma_k \| \leq \left[ 1 - \left( \frac{\eta}{\sigma^2 + \eta} \right)^2 \right] \| \Sigma - \Sigma_k\|}
+\boxed{\|\Sigma - \Sigma_{k+1} \| \leq \left[ 1 - \left( \frac{\eta_k}{\sigma^2 + \eta_k} \right)^2 \right] \| \Sigma - \Sigma_k\|}
 \end{align}
 $$
 > Compared to the original algorithm, **this corresponds to $\epsilon = 1$**. However we solved this using ODE dynamics, so the lifted algorithm converges slower than the original!  This seems to agree with our experience with the code, that the lifted was converging much slower...
+
+Let $R_k = \Sigma_k- \Sigma$
+$$
+\begin{align}
+R_{k+1} &  = R_k - B_k R_k B_k\\
+\|R_{k+1}\| & \leq (1- \lambda_{min}(B_k)^2) \|R_k\|
+\end{align}
+$$
+But in original algorithm (1), $B_k = [\Sigma_k(\Sigma_k + \sigma^2 \mathbb I)^{-1}]^{1/2}$
+
 
 ___
 # Proof

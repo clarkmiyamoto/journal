@@ -28,9 +28,6 @@ Example sbatch script
 #SBATCH --mail-user=cm6627@nyu.edu
 
 export HF_HOME=/scratch/<NetID>/.cache/huggingface
-
-singularity exec --nv \
-  --overlay /scratch/cm6627/.../overlay-25GB-conda.ext3:rw \
   /scratch/work/public/singularity/cuda11.2.2-cudnn8-devel-ubuntu20.04.sif \
   /bin/bash -c "
     source /ext3/miniconda3/bin/activate
@@ -50,6 +47,7 @@ See full documentation [here](https://services.rt.nyu.edu/docs/hpc/submitting_jo
 | ------------------- | ------------------- |
 | `--gres=gpu:1`      | Request any `1` GPU |
 | `--cpus-per-task=8` | Request 8 cpus      |
+|                     |                     |
 
 # First Time User
 These are more tricks that I found useful
