@@ -8,5 +8,6 @@ Reading list
 - Diffusion Models as Priors: https://proceedings.neurips.cc/paper_files/paper/2024/file/d65c4ce22241138c1784ff753d4c746c-Paper-Conference.pdf
 - Bouncy Particle Sampler: https://arxiv.org/pdf/1510.02451
 - Firefly Monte Carlo: https://arxiv.org/pdf/1403.5693
+- Krylov subspace method for inference in diffusion models: https://arxiv.org/pdf/2303.05754
 
 - Read through this: https://metaphor.ethz.ch/x/2025/fs/401-3382-25L/

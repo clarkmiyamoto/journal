@@ -38,16 +38,24 @@ export HF_HOME=/scratch/<NetID>/.cache/huggingface
 
 
 ### Interactive Job
+
+With GPU
 ```bash
-srun --gres=gpu:1 --cpus-per-task=8 --pty bash
+srun --gres=gpu:1 --cpus-per-task=8 --mem=32G --mail-type=BEGIN --pty bash
+```
+
+W/o GPU
+```bash
+srun --cpus-per-task=8 --mem=32G --pty bash
 ```
 See full documentation [here](https://services.rt.nyu.edu/docs/hpc/submitting_jobs/slurm_main_commands/#srun). Note that `--pty bash` needs to go at the end.
 
-| Flag                | Meaning             |
-| ------------------- | ------------------- |
-| `--gres=gpu:1`      | Request any `1` GPU |
-| `--cpus-per-task=8` | Request 8 cpus      |
-|                     |                     |
+| Flag                | Meaning                       |
+| ------------------- | ----------------------------- |
+| `--gres=gpu:1`      | Request any `1` gpu.          |
+| `--cpus-per-task=8` | Request 8 cpus.               |
+| `--mem=32G`         | Gets 32GB of ram for cpu.     |
+| `--mail-type=BEGIN` | Email me when the job begins. |
 
 # First Time User
 These are more tricks that I found useful
